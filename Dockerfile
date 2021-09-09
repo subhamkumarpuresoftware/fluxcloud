@@ -4,7 +4,7 @@ COPY . .
 RUN uname -m
 RUN if [ `uname -m` = "aarch64" ] ; then \
         GO111MODULE=on GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ./fluxcloud ./cmd/;  \
-    if else [ `uname -m` == "arm7"] ; then \     
+    if else [ `uname -m` == "armv7l"] ; then \     
         GO111MODULE=on GOOS=linux GOARM=7 GOARCH=arm CGO_ENABLED=0 go build -o ./fluxcloud ./cmd/; \
     else \
         GO111MODULE=on GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o ./fluxcloud ./cmd/;  \
