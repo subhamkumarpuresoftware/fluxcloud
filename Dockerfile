@@ -1,6 +1,7 @@
 FROM golang:1.17 as builder
 WORKDIR /app
 COPY . .
+RUN uname -m
 RUN if [ `uname -m` = "aarch64" ] ; then \
         GO111MODULE=on GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ./fluxcloud ./cmd/;  \
     if else [ `uname -m` == "arm7"] ; then \     
